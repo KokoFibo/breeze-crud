@@ -1,8 +1,9 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import Pagination from "@/Components/Pagination.vue";
 const props = defineProps({
-    customer: Array,
+    customers: Object,
 });
 </script>
 
@@ -40,7 +41,7 @@ const props = defineProps({
                                 </thead>
                                 <tbody>
                                     <!-- row 1 -->
-                                    <tr v-for="c in customer" :key="c.id">
+                                    <tr v-for="c in customers.data" :key="c.id">
                                         <td>{{ c.id }}</td>
                                         <td>{{ c.nama }}</td>
                                         <td>{{ c.email }}</td>
@@ -71,7 +72,9 @@ const props = defineProps({
                         <!-- table end -->
                     </div>
                 </div>
+                <Contoh />
             </div>
+            <!-- <pagination class="mt-6" :links="customers.links" /> -->
         </div>
     </AuthenticatedLayout>
 </template>
